@@ -15,6 +15,7 @@ public class RentalService {
 	public RentalService(Double pricePerHour, Double pricePerDay, BrazilTaxService taxService) {
 		this.pricePerHour = pricePerHour;
 		this.pricePerDay = pricePerDay;
+		this.taxService = taxService;
 	}
 	
 	public void processInvoice(CarRental carRental) {
@@ -25,10 +26,10 @@ public class RentalService {
 		
 		double basicPayment;
 		if(hours <= 12.0) {
-			basicPayment = pricePerHour * Math.ceil(hours);
+			basicPayment = Math.ceil(hours) * pricePerHour;
 		}
 		else {
-			basicPayment = pricePerDay * Math.ceil(hours / 24);
+			basicPayment = Math.ceil(hours / 24) * pricePerDay;
 		}
 		
 		double tax = taxService.tax(basicPayment);
