@@ -10,7 +10,6 @@ public class Invoice {
 	}
 	
 	public Invoice(Double basicPayment, Double tax) {
-		super();
 		this.basicPayment = basicPayment;
 		this.tax = tax;
 	}
